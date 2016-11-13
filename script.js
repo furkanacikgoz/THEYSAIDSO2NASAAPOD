@@ -5,6 +5,7 @@ $( document ).ready(function() {
     $.ajax({
 		url: nasa_api_url,
 		success: function(result){
+			console.log(result);
 			if("copyright" in result) {
 				$("#nasa_img_copyright").text("Copyright: " + result.copyright);
 			}
@@ -19,6 +20,18 @@ $( document ).ready(function() {
 		}
 	});
 
+
+
+    var quotes_api_url = "http://quotes.rest/qod.json";
+    $.ajax({
+		url: quotes_api_url,
+		success: function(result){
+			console.log(result);
+			console.log(result.contents.quotes[0].quote);
+			$("body blockquote").text(result.contents.quotes[0].quote)
+			
+		}
+	});    
 
 
 });
